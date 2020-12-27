@@ -6,6 +6,6 @@ error() { echo -e "[\x1b[31mx\x1b[0m] $1"; }
 
 
 log "Decommenting versioned files ..."
-./version.py -d
+./prepare.py -d
 log "Adding modified files ..."
 git add .
