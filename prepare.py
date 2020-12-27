@@ -9,7 +9,7 @@ from typing import List
 from socket import gethostname
 
 HOSTNAME = gethostname()
-IGNORE = {'.git', '.gitignore', 'version.py', 'plugged', '__pycache__'}
+IGNORE = {'.git', '.gitignore', 'prepare.py', 'plugged', '__pycache__'}
 VERSIONING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
 ver_regex = re.compile(VERSIONING_REGEX)
 
@@ -79,7 +79,7 @@ def inspect_file(f: TextIOWrapper,
             comment_end: str = match.group('comment_end')
             assert hostname and comment_start and comment_end
             tag: str = line[match.start():match.end()]
-            # Prioritize un-/comment actions over default versioning
+            # Prioritize un-/comment actions over default preparing
             if action == Action.COMMENT:
                 action_func = comment_line
             elif action == Action.UNCOMMENT:
@@ -122,9 +122,9 @@ def main() -> None:
                         help='chdir to DIR before looking for files')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-c', '--comment', action='store_true',
-                       help='comment all versionable code')
+                       help='comment all preparable code')
     group.add_argument('-d', '--decomment', action='store_true',
-                       help='uncomment all versionable code')
+                       help='uncomment all preparable code')
     parser.add_argument('--follow-sym', action='store_true',
                         help='follow symlink folders')
     args = parser.parse_args()
