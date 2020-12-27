@@ -152,7 +152,7 @@ bar {
 
 # Background {{{
 exec --no-startup-id feh --bg-fill ~/Pictures/mountain.jpg #> [#@_Monday]
-exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg #> [#@_Friday]
+exec --no-startup-id feh --bg-tile ~/Pictures/Patter.jpg #> [#@_Friday]
 exec --no-startup-id feh --bg-fill ~/Pictures/mount_bromo.jpeg #> [#@_Jarvis]
 # }}}
 
