@@ -1,0 +1,24 @@
+[user]
+	email = tulimiero.andrea@gmail.com
+	name = Andrea Tulimiero
+[alias]
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  cm = commit
+  cma = !"git add --all && git commit"
+	d = difftool
+  s = status
+  a = add
+  c = commit
+  r = rebase -i
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[core]
+	editor = vim
+[pull]
+	rebase = false
+[merge]
+  tool = vimdiff
+[mergettool]
+	keepBackup = false

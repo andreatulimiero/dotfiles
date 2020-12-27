@@ -1,0 +1,22 @@
+#!/bin/bash
+log () { echo $@ | systemd-cat -p info -t sleep-fixes; }
+error () { echo $@ | systemd-cat -p err -t sleep-fixes; }
+
+case $1 in
+  pre)
+    log "[*] Disabling bluetooth before going to sleep ..."
+    rfkill block bluetooth
+    # Magical sleep to let the hack make effect
+    sleep .5
+    ;;
+  post)
+    log "[*] Enabling bluetooth coming back from sleep ..."
+    rfkill unblock bluetooth
+    log "[*] Restarting libinput gestures ..."
+    libinput-gestures-setup restart
+    log "[*] Setting natural scroll and tap ..."
+    ;;
+  *)
+    error "[x] Unknown command"
+    ;;
+esac
