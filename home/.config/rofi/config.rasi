@@ -1,0 +1,17 @@
+configuration {
+  /* Aspect {{{ */
+  modi: "drun,window,run";
+  font: "System San Francisco Display 10";
+  /* }}} */
+
+  /* Keybindings {{{ */
+  /* Ctrl+j -> scroll down */
+  kb-accept-entry: "Control+m,Return,KP_Enter";
+  kb-row-down: "Down,Control+j";
+
+  /* Ctrl+k -> scroll up */
+  kb-remove-to-eol: "Shift+ISO_Left_Tab";
+  kb-row-up: "Up,Control+k,Shift+Tab";
+  /* }}} */
+}
+@theme "~/.config/rofi/themes/dark.rasi"

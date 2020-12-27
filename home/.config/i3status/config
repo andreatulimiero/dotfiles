@@ -7,11 +7,9 @@ general {
 order += "disk /home"
 order += "path_exists VPN"
 order += "path_exists ETH-VPN"
-order += "wireless wlp0s20f3" // > [// @_Friday]
-// order += "ethernet enp0s20f0u3" // > [// @_Monday]
-// order += "ethernet eno1" // > [// @_Jarvis]
+order += "wireless wlp0s20f3"
 order += "ipv4"
-order += "battery 0" // > [// @_Friday]
+order += "battery 0"
 order += "volume master"
 order += "cpu_temperature 0"
 order += "tztime local"

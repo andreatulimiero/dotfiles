@@ -17,12 +17,17 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " }}}
 
-"Indentation {{{
+"Indentation and Formatting{{{
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set expandtab
+set nojoinspaces
 " }}}
+
+"History {{{
+set undofile
+"}}}
 
 " Appearance {{{
 set number
@@ -43,6 +48,7 @@ set foldmethod=marker
 set wildmenu
 set incsearch
 inoremap <C-n> <C-x><C-n>
+set completeopt-=preview
 " }}}
 
 " Autoreload {{{
@@ -82,7 +88,7 @@ imap kj <Esc>
 set exrc
 set secure
 " Avoid black lines when using vim with kitty
-" let &t_ut=''
+let &t_ut=''
 " Fix for backsapce
 set bs=2
 " Save in clipboard (and a file backup) and quit
@@ -102,12 +108,14 @@ function! ToggleBackground()
   call lightline#update()
 endfunction
 nmap <leader>bg :call ToggleBackground()<CR>
+set switchbuf=useopen,usetab,newtab
 " }}}
 
 " Build&Run {{{
 " Python {{{
 au FileType python nnoremap <C-B> :!clear && python %<CR>
 " au BufWritePost *.py call flake8#Flake8()
+au BufWritePost *.mdmail silent !pandoc % %.html
 " }}}
 " Go {{{
 au FileType go nnoremap <C-B> :!clear && go run . %<CR>
@@ -119,20 +127,24 @@ au FileType tex nnoremap <C-B> :!make <CR><CR>
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdtree'
 Plug 'markonm/traces.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sainnhe/edge'
-Plug 'lervag/vimtex'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
-Plug 'aserebryakov/vim-todo-lists'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'sainnhe/edge'
+"Plug 'lervag/vimtex'
+"Plug 'tpope/vim-fugitive'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'majutsushi/tagbar'
+"Plug 'aserebryakov/vim-todo-lists'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-notes'
+"Plug 'fatih/vim-go'
+"Plug 'sebdah/vim-delve'
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " NERDCommenter {{{
@@ -147,24 +159,29 @@ let g:NERDTreeDirArrowCollapsible = '-'
 "" }}}
 
 " Solarized {{{
-let g:solarized_termcolors=256
-colorscheme solarized
+" let g:solarized_termcolors=256
+" colorscheme solarized
 "" }}}
 
 " Edge {{{
 " set termguicolors
 " colorscheme edge
-let g:neon_popup_menu_selection_background = 'green'
+" let g:neon_popup_menu_selection_background = 'green'
 "" }}}
+
+" GruvBox {{{
+colorscheme gruvbox
+" }}
 
 ""{{{ VimAirline
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'gruvbox',
       \ }
 let g:airline_solarized_bg='dark'
 if !has('gui_running')
   set t_Co=256
 endif
+let g:airline_theme='gruvbox'
 ""}}}
 
 " {{{ Fzf
@@ -213,11 +230,17 @@ nnoremap <buffer> < :VimTodoListsDecreaseIndent<CR>
 " Vim Notes {{{
 let g:notes_directories = ['~/Notes']
 " }}}
-" }}}
 
 " Spellcheck {{{
 " (placed here to override colorscheme defaults) 
 set spelllang=en_us
 hi SpellBad cterm=underline
 nnoremap z= 1z=
+" }}}
+
+" YCM {{{
+nnoremap <C-]> :YcmCompleter GoTo<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+" }}}
+
 " }}}

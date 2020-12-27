@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Version the config files
-./version.py
+# Prepare the config files
+./prepare.py
 
 # Stow the home folder
 stow home -t ~/

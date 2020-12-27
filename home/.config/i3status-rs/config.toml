@@ -1,90 +1,54 @@
-[theme]
-name = "gruvbox-dark"
-[theme.overrides]
-info_bg = "#282828"
-info_fg = "#ebdbb2"
-good_bg = "#282828"
-good_fg = "#ebdbb2"
+icons_format = "{icon}"
+
+#[theme]
+##theme = "gruvbox-dark"
+#[theme.overrides]
+##info_bg = "#282828"
+##info_fg = "#ebdbb2"
+##good_bg = "#282828"
+##good_fg = "#ebdbb2"
 
 [icons]
-name = "awesome"
+icons = "/home/tulimiero/Repos/i3status-rust/files/icons/awesome6.toml"
 [icons.overrides]
-memory_mem = " "
-cpu = " "
-bat_charging = " "
-backlight_empty = " "
-backlight_partial1 = " "
-backlight_partial2 = " "
-backlight_partial3 = " "
-backlight_full = " "
-
-# [[block]]
-# block = "focused_window"
-# max_width = 25
+volume_muted = "\uf026 \uf00d"
+backlight = [
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+]
 
 # Music {{{
 [[block]]
 block = "music"
-buttons = ["play", "next"]
-on_collapsed_click = "spotify"
-marquee = false
-smart_trim = true
+format = " $icon {$combo.str(max_w:20)|} "
 # }}}
 
 # Networks {{{
 [[block]]
 block = "net"
-device = "enp0s20f0u3"
-ip = true
-speed_up = false
-speed_down = false
-interval = 10
-use_bits = false
-hide_missing = true
-hide_inactive = true
-
-[[block]]
-block = "net"
-device = "enp0s20f0u4"
-ip = true
-speed_up = false
-speed_down = false
-interval = 10
-use_bits = false
-hide_missing = true
-hide_inactive = true
-
-[[block]]
-block = "net"
-device = "wlp0s20f3"
-ip = true
-speed_up = false
-speed_down = false
-interval = 10
-use_bits = false
-hide_missing = true
-hide_inactive = true
+format = " $icon {$ssid $frequency|Wired connection} "
 # }}}
 
 # Disk {{{
 [[block]]
 block = "disk_space"
-path = "/home"
-alias = ""
 info_type = "available"
-unit = "GB"
-interval = 20
-warning = 20.0
+path = "/home"
+alert_unit = "GB"
 alert = 10.0
+warning = 20.0
 # }}}
 
 # Memory {{{
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{MAg}GB"
-clickable = false
+interval = 30
+format = " $icon $mem_used_percents.eng(w:1) "
 warning_mem = 90
+critical_mem = 99
 # }}}
 
 # Light {{{
@@ -96,7 +60,10 @@ block = "backlight"
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}% {time}"
+format = " $icon $percentage "
+full_threshold = 99
+info = 99
+critical = 10
 # }}}
 
 # Sound {{{
@@ -108,5 +75,5 @@ block = "sound"
 [[block]]
 block = "time"
 interval = 60
-format = "%a %d/%m %R"
+format = " $timestamp.datetime(f:'%a %d/%m %R') "
 # }}}

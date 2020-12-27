@@ -9,9 +9,9 @@ from typing import List
 from socket import gethostname
 
 HOSTNAME = gethostname()
-IGNORE = {'.git', '.gitignore', 'version.py', 'plugged', '__pycache__'}
-VERSIONING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
-ver_regex = re.compile(VERSIONING_REGEX)
+IGNORE = {'.git', '.gitignore', 'prepare.py', 'plugged', '__pycache__', 'README.md'}
+PREPARING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
+prep_regex = re.compile(PREPARING_REGEX)
 
 class Action(Enum):
     COMMENT = 1
@@ -72,14 +72,14 @@ def inspect_file(f: TextIOWrapper,
                  action: Action) -> List[str]:
     lines = []
     for line in f:
-        match = ver_regex.search(line)
+        match = prep_regex.search(line)
         if match:
             hostname: str = match.group('hostname')
             comment_start: str = match.group('comment_start')
             comment_end: str = match.group('comment_end')
             assert hostname and comment_start and comment_end
             tag: str = line[match.start():match.end()]
-            # Prioritize un-/comment actions over default versioning
+            # Prioritize un-/comment actions over default preparing
             if action == Action.COMMENT:
                 action_func = comment_line
             elif action == Action.UNCOMMENT:
@@ -116,15 +116,15 @@ def inspect_dir(dirname: str,
             pass
 
 def main() -> None:
-    parser = ArgumentParser(description='Version configuration files for '
+    parser = ArgumentParser(description='Prepare configuration files for '
                                         'multiple devices usage')
     parser.add_argument('-C', '--dir', action='store', default='.',
                         help='chdir to DIR before looking for files')
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-c', '--comment', action='store_true',
-                       help='comment all versionable code')
+                       help='comment all preparable code')
     group.add_argument('-d', '--decomment', action='store_true',
-                       help='uncomment all versionable code')
+                       help='uncomment all preparable code')
     parser.add_argument('--follow-sym', action='store_true',
                         help='follow symlink folders')
     args = parser.parse_args()

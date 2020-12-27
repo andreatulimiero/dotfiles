@@ -1,31 +1,24 @@
 # Miscellanea {{{
 # Set the $mod key
 set $mod Mod1
-# Assign caps lock to Mod3
-exec xmodmap ~/.Xmodmap
 set $caps Mod3
+input * xkb_layout us_custom
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# Screenshot
-bindsym Print exec gnome-screenshot -i
-# Start Rofi
-bindsym $mod+d exec rofi -show combi
+xwayland disable
 # }}}
 
 # Shortcuts {{{
 bindsym $mod+e exec alacritty --class Floating -e ranger
 bindsym $mod+Return exec alacritty -e tmux
 bindsym $mod+Shift+Return exec alacritty
-# tulimiero1
-# bindsym $mod+e exec kitty --class Floating -e ranger
-# bindsym $mod+Return exec kitty tmux
-# bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
-# bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
 bindsym $caps+p exec passmenu
+bindsym Print exec gnome-screenshot -i
+bindsym $mod+d exec rofi -show combi
 # }}}
 
 # Fonts {{{
@@ -140,7 +133,7 @@ bindsym $mod+Shift+q kill
 
 # {{{ Scratchpad
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+Shift+plus scratchpad show
+bindsym $mod+Shift+equal scratchpad show
 # }}}
 # }}}
 
@@ -156,14 +149,18 @@ exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg
 exec --no-startup-id nm-applet
 # }}}
 
-# Compton {{{
-# exec compton --config ~/.config/compton.config
-# }}}
-
 # Lockscreen {{{
-bindsym $mod+Shift+p exec betterlockscreen -l
-exec xautolock -time 15 -locker "betterlockscreen -l" -corners -0-0
-exec xss-lock -l -- betterlockscreen -l
+bindsym $mod+Shift+p exec swaylock -i ~/Pictures/Lockscreen.jpg
+exec xautolock -time 15 -locker "swaylock -i ~/Pictures/Lockscreen.jpg" -corners -0-0
+# Lock the screen after 300 seconds of inactivity, turn off screens after 600
+# seconds and tunr screens back on when resumed. Finally, lock the screen when
+# logind signals the session should be locked and before going to sleep.
+exec swayidle -w \
+  timeout 300 'swaylock -f -i ~/Pictures/Lockscreen.jpg' \
+  timeout 600 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -i ~/Pictures/Lockscreen.jpg' \
+  lock 'swaylock -f -i ~/Pictures/Lockscreen.jpg'
 # }}}
 
 # Media Buttons {{{
@@ -182,13 +179,20 @@ bindsym XF86MonBrightnessUp exec brightness +5%
 bindsym XF86MonBrightnessDown exec brightness -5%
 # }}}
 
-# Touchpad {{{
-exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Tapping Enabled' 1
-exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Natural Scrolling Enabled' 1
-# tuimiero1
-# exec xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Enabled' 1
-# exec xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Natural Scrolling Enabled' 1
-exec xset r rate 150 50
+# Output Devices {{{
+output eDP-1 scale 1.8
+# }}}
+
+# Input Devices {{{
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+input type:keyboard {
+  repeat_rate 50
+  repeat_delay 150
+  # Assign caps lock to Mod3
+}
 # }}}
 
 # Appearance {{{
@@ -199,10 +203,4 @@ for_window [class=".*"] border pixel 2
 # Borders {{{
 smart_borders on
 # }}}
-# }}}
-
-# Gaps {{{
-# gaps inner 2
-# smart_gaps on
-# smart_borders on
 # }}}

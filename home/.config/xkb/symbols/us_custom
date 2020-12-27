@@ -1,0 +1,6 @@
+xkb_symbols "basic" {
+    include "us"
+    # Make CapsLock Mod3
+    key <CAPS> { [ Hyper_L ] };
+    modifier_map Mod3 { Hyper_L };
+};
