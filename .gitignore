@@ -1,7 +1,3 @@
 **__pycache__
 .mypy_cache/
-**/history
-.vim/spell
-.vim/plugged
 *.swp
-**/fish_variables
