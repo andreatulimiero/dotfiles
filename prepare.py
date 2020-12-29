@@ -10,8 +10,8 @@ from socket import gethostname
 
 HOSTNAME = gethostname()
 IGNORE = {'.git', '.gitignore', 'prepare.py', 'plugged', '__pycache__'}
-VERSIONING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
-ver_regex = re.compile(VERSIONING_REGEX)
+PREPARING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
+prep_regex = re.compile(PREPARING_REGEX)
 
 class Action(Enum):
     COMMENT = 1
@@ -72,7 +72,7 @@ def inspect_file(f: TextIOWrapper,
                  action: Action) -> List[str]:
     lines = []
     for line in f:
-        match = ver_regex.search(line)
+        match = prep_regex.search(line)
         if match:
             hostname: str = match.group('hostname')
             comment_start: str = match.group('comment_start')
@@ -116,7 +116,7 @@ def inspect_dir(dirname: str,
             pass
 
 def main() -> None:
-    parser = ArgumentParser(description='Version configuration files for '
+    parser = ArgumentParser(description='Prepare configuration files for '
                                         'multiple devices usage')
     parser.add_argument('-C', '--dir', action='store', default='.',
                         help='chdir to DIR before looking for files')
