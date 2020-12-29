@@ -91,6 +91,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Floating"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Gnome-screenshot"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
 # }}}
 # }}}
 
