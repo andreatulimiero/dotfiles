@@ -5,7 +5,7 @@ success() { echo -e "[\x1b[32m✓\x1b[0m] $1"; }
 error() { echo -e "[\x1b[31mx\x1b[0m] $1"; }
 
 
-log "Decommenting versioned files ..."
+log "Decommenting prepared files ..."
 ./prepare.py -d
 log "Adding modified files ..."
 git add .

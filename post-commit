@@ -5,5 +5,5 @@ success() { echo -e "[\x1b[32m✓\x1b[0m] $1"; }
 error() { echo -e "[\x1b[31mx\x1b[0m] $1"; }
 
 
-log "Versioning files back again ..."
+log "Preparing files back again ..."
 ./prepare.py
