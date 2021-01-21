@@ -8,7 +8,7 @@ While the majority of my dotfiles are fine across my machines, I have the need f
 To tackle this need, I have a custom script (`prepare.py`) that automatically prepares the dotfiles based on the hostname of the machine.
 ### Why a custom solution?
 I have heard there are some solutions that combine different per-host files into a single configuration.
-While this is a sensible approach, I believe it makes sense only when the number of changes per-host is significant enough to justify the additional fragmentation of the files.
+While this is a sensible approach, I believe it makes sense only when the number of changes between hosts is significant enough to justify the additional fragmentation of the files.  
 Since I found myself changing only a tiny part of my dotfiles, I opted for a solution that kept the structure of my dotfiles the same as in a single machine use case.
 ### How does it work?
 Currently, the solution works on a line-by-line basis (e.g., no per-host blocks of configurations).
