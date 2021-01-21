@@ -1,9 +1,9 @@
 Dotfiles
 ===
 This repository contains dotfiles for my vanilla _ArchLinux_/_i3wm_ setup.  
-Dotfiles are first *prepared*, for per-host preferences, and then installed using `stow`.
+Dotfiles are first **prepared**, for per-host preferences, and then installed using `stow`.
 
-## Preparation
+### Preparing
 While the majority of my dotfiles are fine across my machines, I have the need for some specific tweaks.
 To tackle this need, I have a custom script (`prepare.py`) that automatically prepares the dotfiles based on the hostname of the machine.
 ### Why a custom solution?
