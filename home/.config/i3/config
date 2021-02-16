@@ -21,8 +21,11 @@ bindsym $mod+d exec rofi -show combi
 bindsym $mod+e exec nautilus
 bindsym $mod+Return exec st #> [#@_Friday]
 bindsym $mod+Return exec kitty #> [#@_Monday]
+bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
+bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
 bindsym $caps+p exec passmenu
-bindsym $caps+v exec st -c Floating vim
+bindsym $caps+v exec st -c Floating vim #> [#@_Friday]
+bindsym $caps+v exec kitty --class Floating vim #> [#@_Monday]
 # }}}
 
 # Fonts {{{

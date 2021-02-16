@@ -82,7 +82,7 @@ imap kj <Esc>
 set exrc
 set secure
 " Avoid black lines when using vim with kitty
-" let &t_ut=''
+let &t_ut=''
 " Fix for backsapce
 set bs=2
 " Save in clipboard (and a file backup) and quit
