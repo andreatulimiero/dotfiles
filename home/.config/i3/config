@@ -19,7 +19,10 @@ bindsym $mod+d exec rofi -show combi
 # Shortcuts {{{
 # bindsym $mod+e exec st -c Floating ranger
 bindsym $mod+e exec nautilus
-bindsym $mod+Return exec st
+bindsym $mod+Return exec st #> [#@_Friday]
+bindsym $mod+Return exec kitty #> [#@_Monday]
+bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
+bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
 bindsym $caps+p exec passmenu
 bindsym $caps+v exec st -c Floating vim
 # i3tmux {{{
@@ -27,6 +30,8 @@ bindsym $caps+Shift+Return exec i3tmux --add
 bindsym $caps+Shift+d exec i3tmux --detach
 bindsym $caps+Shift+q exec i3tmux --kill
 # }}}
+bindsym $caps+v exec st -c Floating vim #> [#@_Friday]
+bindsym $caps+v exec kitty --class Floating vim #> [#@_Monday]
 # }}}
 
 # Fonts {{{
@@ -157,10 +162,10 @@ bar {
 # }}}
 
 # Background {{{
-exec --no-startup-id feh --bg-fill ~/Pictures/mountain.jpg #> [#@_Monday]
+exec --no-startup-id feh --bg-fill ~/Pictures/Clouds.jpg #> [#@_Monday]
 exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg #> [#@_Friday]
 exec --no-startup-id feh --bg-fill ~/Pictures/mount_bromo.jpeg #> [#@_Jarvis]
-exec nm-applet
+exec --no-startup-id nm-applet
 # }}}
 
 # Compton {{{

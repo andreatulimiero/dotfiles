@@ -9,7 +9,7 @@ from typing import List
 from socket import gethostname
 
 HOSTNAME = gethostname()
-IGNORE = {'.git', '.gitignore', 'prepare.py', 'plugged', '__pycache__'}
+IGNORE = {'.git', '.gitignore', 'prepare.py', 'plugged', '__pycache__', 'README.md'}
 PREPARING_REGEX = r">\s*\[(?P<comment_start>[^0-9A-Za-z]+)@(?P<comment_end>[^0-9A-Za-z]+)(?P<hostname>[0-9A-Za-z]+)\]"
 prep_regex = re.compile(PREPARING_REGEX)
 
