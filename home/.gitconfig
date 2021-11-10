@@ -22,3 +22,5 @@
   tool = vimdiff
 [mergettool]
 	keepBackup = false
+[init]
+	defaultBranch = main

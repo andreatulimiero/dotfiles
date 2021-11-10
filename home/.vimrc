@@ -17,12 +17,17 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " }}}
 
-"Indentation {{{
+"Indentation and Formatting{{{
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set expandtab
+set nojoinspaces
 " }}}
+
+"History {{{
+set undofile
+"}}}
 
 " Appearance {{{
 set number
@@ -43,6 +48,7 @@ set foldmethod=marker
 set wildmenu
 set incsearch
 inoremap <C-n> <C-x><C-n>
+set completeopt-=preview
 " }}}
 
 " Autoreload {{{
@@ -133,6 +139,10 @@ Plug 'majutsushi/tagbar'
 Plug 'aserebryakov/vim-todo-lists'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'fatih/vim-go'
+Plug 'sebdah/vim-delve'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 " NERDCommenter {{{
@@ -147,24 +157,29 @@ let g:NERDTreeDirArrowCollapsible = '-'
 "" }}}
 
 " Solarized {{{
-let g:solarized_termcolors=256
-colorscheme solarized
+" let g:solarized_termcolors=256
+" colorscheme solarized
 "" }}}
 
 " Edge {{{
 " set termguicolors
 " colorscheme edge
-let g:neon_popup_menu_selection_background = 'green'
+" let g:neon_popup_menu_selection_background = 'green'
 "" }}}
+
+" GruvBox {{{
+colorscheme gruvbox
+" }}
 
 ""{{{ VimAirline
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'gruvbox',
       \ }
 let g:airline_solarized_bg='dark'
 if !has('gui_running')
   set t_Co=256
 endif
+let g:airline_theme='gruvbox'
 ""}}}
 
 " {{{ Fzf
@@ -213,11 +228,17 @@ nnoremap <buffer> < :VimTodoListsDecreaseIndent<CR>
 " Vim Notes {{{
 let g:notes_directories = ['~/Notes']
 " }}}
-" }}}
 
 " Spellcheck {{{
 " (placed here to override colorscheme defaults) 
 set spelllang=en_us
 hi SpellBad cterm=underline
 nnoremap z= 1z=
+" }}}
+
+" YCM {{{
+nnoremap <C-]> :YcmCompleter GoTo<CR>
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+" }}}
+
 " }}}

@@ -12,11 +12,6 @@ name = "awesome"
 memory_mem = " "
 cpu = " "
 bat_charging = " "
-backlight_empty = " "
-backlight_partial1 = " "
-backlight_partial2 = " "
-backlight_partial3 = " "
-backlight_full = " "
 
 # [[block]]
 # block = "focused_window"
@@ -35,33 +30,21 @@ smart_trim = true
 [[block]]
 block = "net"
 device = "enp0s20f0u3"
-ip = true
-speed_up = false
-speed_down = false
 interval = 10
-use_bits = false
 hide_missing = true
 hide_inactive = true
 
 [[block]]
 block = "net"
 device = "enp0s20f0u4"
-ip = true
-speed_up = false
-speed_down = false
 interval = 10
-use_bits = false
 hide_missing = true
 hide_inactive = true
 
 [[block]]
 block = "net"
 device = "wlp0s20f3"
-ip = true
-speed_up = false
-speed_down = false
 interval = 10
-use_bits = false
 hide_missing = true
 hide_inactive = true
 # }}}
@@ -82,7 +65,6 @@ alert = 10.0
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{MAg}GB"
 clickable = false
 warning_mem = 90
 # }}}
@@ -96,7 +78,7 @@ block = "backlight"
 [[block]]
 block = "battery"
 interval = 10
-format = "{percentage}% {time}"
+format = "{percentage} {time}"
 # }}}
 
 # Sound {{{

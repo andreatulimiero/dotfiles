@@ -22,6 +22,11 @@ bindsym $mod+e exec nautilus
 bindsym $mod+Return exec st
 bindsym $caps+p exec passmenu
 bindsym $caps+v exec st -c Floating vim
+# i3tmux {{{
+bindsym $caps+Shift+Return exec i3tmux --add
+bindsym $caps+Shift+d exec i3tmux --detach
+bindsym $caps+Shift+q exec i3tmux --kill
+# }}}
 # }}}
 
 # Fonts {{{
@@ -155,6 +160,7 @@ bar {
 exec --no-startup-id feh --bg-fill ~/Pictures/mountain.jpg #> [#@_Monday]
 exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg #> [#@_Friday]
 exec --no-startup-id feh --bg-fill ~/Pictures/mount_bromo.jpeg #> [#@_Jarvis]
+exec nm-applet
 # }}}
 
 # Compton {{{
