@@ -108,12 +108,14 @@ function! ToggleBackground()
   call lightline#update()
 endfunction
 nmap <leader>bg :call ToggleBackground()<CR>
+set switchbuf=useopen,usetab,newtab
 " }}}
 
 " Build&Run {{{
 " Python {{{
 au FileType python nnoremap <C-B> :!clear && python %<CR>
 " au BufWritePost *.py call flake8#Flake8()
+au BufWritePost *.mdmail silent !pandoc % %.html
 " }}}
 " Go {{{
 au FileType go nnoremap <C-B> :!clear && go run . %<CR>

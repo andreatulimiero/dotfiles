@@ -2,10 +2,6 @@ configuration {
   /* Aspect {{{ */
   modi: "drun,window,run";
   font: "System San Francisco Display 20";
-  width: 60;
-  padding: 30;
-  opacity: 85;
-  theme: "~/.config/rofi/themes/dark.rasi";
   /* }}} */
 
   /* Keybindings {{{ */
@@ -18,3 +14,4 @@ configuration {
   kb-row-up: "Up,Control+k,Shift+Tab";
   /* }}} */
 }
+@theme "~/.config/rofi/themes/dark.rasi"
