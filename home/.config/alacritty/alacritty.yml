@@ -10,3 +10,6 @@ font:
   italic:
     family: Source Code Pro
     # style: Italic
+colors:
+  primary:
+    background: '#000000'
