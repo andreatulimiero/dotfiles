@@ -4,6 +4,10 @@ fish_add_path ~/.local/bin
 fish_add_path ~/go/bin
 # }}}
 
+# Env Vars {{{
+alias vi="nvim"
+# }}}
+
 # Key Bindings {{{
 set fish_key_bindings fish_user_key_bindings
 fzf_key_bindings
