@@ -9,3 +9,5 @@ edition = "2021"
 clap = { version = "4.0", features = ["derive"] }
 walkdir = "2"
 regex = "1"
+lazy_static = "1.4.0"
+gethostname = "0.4.3"
