@@ -18,7 +18,7 @@ bindsym $mod+d exec rofi -show combi
 
 # Shortcuts {{{
 # bindsym $mod+e exec st -c Floating ranger
-bindsym $mod+e exec nautilus
+bindsym $mod+e exec alacritty --class Floating -e ranger
 bindsym $mod+Return exec alacritty #> [#@_Friday]
 bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
 bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
@@ -200,6 +200,9 @@ exec xset r rate 250 50
 # Remove borders and title of windows
 for_window [class=".*"] border pixel 4
 #}}}
+# Borders {{{
+smart_borders on
+# }}}
 # }}}
 
 # Gaps {{{
