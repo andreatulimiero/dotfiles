@@ -41,5 +41,13 @@ return require('packer').startup(function(use)
       })
     end,
   }
+  use {
+    'LukasPietzschmann/telescope-tabs',
+    requires = { 'nvim-telescope/telescope.nvim' }
+  }
+  use {
+    "kelly-lin/telescope-ag",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+  }
 end)
 

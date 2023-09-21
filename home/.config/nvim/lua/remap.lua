@@ -13,7 +13,7 @@ vim.opt.hlsearch = false;
 vim.opt.number = true
 vim.opt.breakindent = true
 vim.opt.showbreak = "↪ "
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "81"
 vim.opt.scrolloff = 4
 
 -- Misc
