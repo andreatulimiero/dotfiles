@@ -15,12 +15,14 @@
 [difftool]
 	prompt = false
 [core]
-	editor = vim
+	editor = nvim
 [pull]
 	rebase = false
 [merge]
   tool = vimdiff
 [mergettool]
 	keepBackup = false
+[mergetool "vimdiff"]
+  path = nvim
 [init]
 	defaultBranch = main
