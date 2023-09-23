@@ -17,7 +17,6 @@ bindsym $mod+d exec rofi -show combi
 # }}}
 
 # Shortcuts {{{
-# bindsym $mod+e exec st -c Floating ranger
 bindsym $mod+e exec alacritty --class Floating -e ranger
 bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
 bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
@@ -145,11 +144,8 @@ bindsym $mod+Shift+plus scratchpad show
 # }}}
 
 # Bar {{{
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bar {
   position top
-  # output eDP1
-  # status_command i3status
   status_command i3status-rs $HOME/.config/i3status-rs/config.toml
 }
 # }}}
