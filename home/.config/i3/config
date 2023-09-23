@@ -19,11 +19,9 @@ bindsym $mod+d exec rofi -show combi
 # Shortcuts {{{
 # bindsym $mod+e exec st -c Floating ranger
 bindsym $mod+e exec alacritty --class Floating -e ranger
-bindsym $mod+Return exec alacritty #> [#@_Friday]
 bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
 bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
 bindsym $caps+p exec passmenu
-bindsym $caps+v exec alacritty --class Floating vim #> [#@_Monday]
 # i3tmux {{{
 bindsym $caps+Shift+Return exec i3tmux --add
 bindsym $caps+Shift+d exec i3tmux --detach
@@ -157,9 +155,6 @@ bar {
 # }}}
 
 # Background {{{
-exec --no-startup-id feh --bg-fill ~/Pictures/Clouds.jpg #> [#@_Monday]
-exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg #> [#@_Friday]
-exec --no-startup-id feh --bg-fill ~/Pictures/mount_bromo.jpeg #> [#@_Jarvis]
 exec --no-startup-id nm-applet
 # }}}
 
@@ -190,9 +185,7 @@ bindsym XF86MonBrightnessDown exec brightness -5%
 # }}}
 
 # Touchpad {{{
-exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Tapping Enabled' 1 #> [#@_Friday]
-exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Natural Scrolling Enabled' 1 #> [#@_Friday]
-exec xset r rate 250 50
+exec xset r rate 150 50
 # }}}
 
 # Appearance {{{
