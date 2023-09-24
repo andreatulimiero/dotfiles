@@ -7,10 +7,8 @@
 #good_fg = "#ebdbb2"
 
 [icons]
-icons = "awesome5"
+icons = "awesome6"
 [icons.overrides]
-memory_mem = ""
-cpu = ""
 bat_charging = ""
 
 # Music {{{
@@ -39,7 +37,7 @@ warning = 20.0
 [[block]]
 block = "memory"
 interval = 30
-format = " icon $mem_used_percents.eng(w:1) "
+format = " $icon $mem_used_percents.eng(w:1) "
 warning_mem = 90
 critical_mem = 99
 # }}}
