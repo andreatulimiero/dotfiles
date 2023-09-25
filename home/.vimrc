@@ -127,23 +127,23 @@ au FileType tex nnoremap <C-B> :!make <CR><CR>
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdcommenter'
+"Plug 'scrooloose/nerdtree'
 Plug 'markonm/traces.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sainnhe/edge'
-Plug 'lervag/vimtex'
-Plug 'tpope/vim-fugitive'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
-Plug 'aserebryakov/vim-todo-lists'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-Plug 'fatih/vim-go'
-Plug 'sebdah/vim-delve'
-Plug 'ycm-core/YouCompleteMe'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'sainnhe/edge'
+"Plug 'lervag/vimtex'
+"Plug 'tpope/vim-fugitive'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+"Plug 'majutsushi/tagbar'
+"Plug 'aserebryakov/vim-todo-lists'
+"Plug 'xolox/vim-misc'
+"Plug 'xolox/vim-notes'
+"Plug 'fatih/vim-go'
+"Plug 'sebdah/vim-delve'
+"Plug 'ycm-core/YouCompleteMe'
 Plug 'morhetz/gruvbox'
 call plug#end()
 

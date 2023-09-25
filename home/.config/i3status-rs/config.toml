@@ -1,15 +1,24 @@
-[theme]
-#theme = "gruvbox-dark"
-[theme.overrides]
-#info_bg = "#282828"
-#info_fg = "#ebdbb2"
-#good_bg = "#282828"
-#good_fg = "#ebdbb2"
+icons_format = "{icon}"
+
+#[theme]
+##theme = "gruvbox-dark"
+#[theme.overrides]
+##info_bg = "#282828"
+##info_fg = "#ebdbb2"
+##good_bg = "#282828"
+##good_fg = "#ebdbb2"
 
 [icons]
-icons = "awesome6"
+icons = "/home/tulimiero/Repos/i3status-rust/files/icons/awesome6.toml"
 [icons.overrides]
-bat_charging = ""
+volume_muted = "\uf026 \uf00d"
+backlight = [
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+    "\uf0eb",
+]
 
 # Music {{{
 [[block]]

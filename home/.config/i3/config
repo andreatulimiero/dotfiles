@@ -20,6 +20,11 @@ bindsym $mod+d exec rofi -show combi
 bindsym $mod+e exec alacritty --class Floating -e ranger
 bindsym $mod+Return exec alacritty -e tmux
 bindsym $mod+Shift+Return exec alacritty
+# tulimiero1
+# bindsym $mod+e exec kitty --class Floating -e ranger
+# bindsym $mod+Return exec kitty tmux
+# bindsym $mod+Shift+Return exec /home/heimdall/Repos/i3tmux/i3tmux --add --host ubs7
+# bindsym $mod+Shift+d exec /home/heimdall/Repos/i3tmux/i3tmux --detach --host ubs7
 bindsym $caps+p exec passmenu
 # }}}
 
@@ -180,6 +185,9 @@ bindsym XF86MonBrightnessDown exec brightness -5%
 # Touchpad {{{
 exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Tapping Enabled' 1
 exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Natural Scrolling Enabled' 1
+# tuimiero1
+# exec xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Tapping Enabled' 1
+# exec xinput set-prop 'ELAN0672:00 04F3:3187 Touchpad' 'libinput Natural Scrolling Enabled' 1
 exec xset r rate 150 50
 # }}}
 
