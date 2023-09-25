@@ -1,5 +1,9 @@
 -- Mason setup
-require('mason').setup()
+local success, err = pcall(function() require('mason').setup() end)
+if not success then
+  print("Mason not found, aborting lsp.lua execution")
+  return
+end
 require('mason-lspconfig').setup {
 	ensure_installed = {
 		"lua_ls", -- Lua
