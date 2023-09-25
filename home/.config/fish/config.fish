@@ -6,6 +6,7 @@ set -gx EDITOR nvim
 fish_add_path ~/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/go/bin
+fish_add_path ~/.cargo/bin
 # }}}
 
 # Aliases {{{
