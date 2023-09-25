@@ -1,4 +1,9 @@
-local ranger_nvim = require("ranger-nvim")
+local ranger_nvim
+local success, err = pcall(require, "ranger-nvim")
+if not success then
+  print("Ranger module not found, aborting ranger.lua execution")
+  return
+end
 ranger_nvim.setup({
   enable_cmds = false,
   keybinds = {
