@@ -1,5 +1,7 @@
 local ranger_nvim
-local success, err = pcall(require, "ranger-nvim")
+local success, err = pcall(function ()
+  ranger_nvim = require("ranger-nvim")
+end)
 if not success then
   print("Ranger module not found, aborting ranger.lua execution")
   return
