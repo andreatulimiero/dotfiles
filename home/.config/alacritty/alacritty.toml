@@ -1,0 +1,14 @@
+[colors.primary]
+background = "#000000"
+
+[font]
+size = 9
+
+[font.bold]
+family = "Hack Nerd Font Mono"
+
+[font.italic]
+family = "Hack Nerd Font Mono"
+
+[font.normal]
+family = "Hack Nerd Font Mono"
