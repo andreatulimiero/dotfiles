@@ -1,11 +1,15 @@
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use { "ellisonleao/gruvbox.nvim" }
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use {
+    "hrsh7th/nvim-cmp",
+    path = "~/Repos/nvim-cmp/"
+  }
   use {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -23,12 +27,17 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},
     }
   }
-  use {
-    'Exafunction/codeium.vim',
-    config = function ()
-      vim.keymap.set('i', '<C-t>', function () return vim.fn['codeium#Accept']() end, { expr = true })
-    end
-  }
+  -- use {
+  --   "Exafunction/codeium.nvim",
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   config = function()
+  --     require("codeium").setup({
+  --     })
+  --   end
+  -- }
   use {
     "kelly-lin/ranger.nvim",
     config = function()

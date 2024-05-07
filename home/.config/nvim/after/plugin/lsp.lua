@@ -17,12 +17,21 @@ require('mason-lspconfig').setup {
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 local cmp = require('cmp')
+cmp.setup {
+  experimental = {
+    ghost_text = true
+  },
+  sources = {
+    -- { name = "codeium" },
+    { name = "nvim_lsp" },
+    { name = "buffer", keyword_length = 3}
+  }
+}
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
 	['<C-f>'] = cmp.mapping.confirm({ select = true }),
-	['<C-n>'] = cmp.mapping.complete(),
 })
 lsp.setup_nvim_cmp({ mapping = cmp_mappings })
 lsp.setup()

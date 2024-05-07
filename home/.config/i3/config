@@ -192,7 +192,7 @@ exec xset r rate 150 50
 # Appearance {{{
 # Windows {{{
 # Remove borders and title of windows
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 2
 #}}}
 # Borders {{{
 smart_borders on
