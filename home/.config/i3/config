@@ -19,6 +19,7 @@ bindsym $mod+d exec rofi -show combi
 # Shortcuts {{{
 bindsym $mod+e exec alacritty --class Floating -e ranger
 bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Shift+Return exec alacritty
 bindsym $caps+p exec passmenu
 # }}}
 
@@ -157,7 +158,7 @@ exec --no-startup-id nm-applet
 # Lockscreen {{{
 bindsym $mod+Shift+p exec betterlockscreen -l
 exec xautolock -time 15 -locker "betterlockscreen -l" -corners -0-0
-exec xss-lock -- betterlockscreen -l
+exec xss-lock -l -- betterlockscreen -l
 # }}}
 
 # Media Buttons {{{
