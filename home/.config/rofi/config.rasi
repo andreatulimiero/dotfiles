@@ -1,7 +1,7 @@
 configuration {
   /* Aspect {{{ */
   modi: "drun,window,run";
-  font: "System San Francisco Display 20";
+  font: "System San Francisco Display 10";
   /* }}} */
 
   /* Keybindings {{{ */
