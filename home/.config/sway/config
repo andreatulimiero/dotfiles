@@ -1,0 +1,200 @@
+# Miscellanea {{{
+# Set the $mod key
+set $mod Mod1
+# Assign caps lock to Mod3
+exec xmodmap ~/.Xmodmap
+set $caps Mod3
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Screenshot
+bindsym Print exec gnome-screenshot -i
+# Start Rofi
+bindsym $mod+d exec rofi -show combi
+# }}}
+
+# Shortcuts {{{
+bindsym $mod+e exec alacritty --class Floating -e ranger
+bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Shift+Return exec alacritty
+bindsym $caps+p exec passmenu
+# }}}
+
+# Fonts {{{
+font pango:Hack Nerd Font Propo 10
+# }}}
+
+# Workspaces {{{
+# Name workspaces {{{
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+# }}}
+# Switch workspace {{{
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+Tab workspace back_and_forth
+# }}}}
+# Move container to workspace {{{
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+# }}}
+# }}}
+
+# Windows {{{
+# Layouts {{{
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+v layout splitv
+# }}}
+
+# Floating {{{
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# Floating apps {{{
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="Arandr"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Floating"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Gnome-screenshot"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+# }}}
+# }}}
+
+# Splitting {{{
+# split in horizontal
+bindsym $mod+s split v
+# split in vertical 
+bindsym $mod+v split h
+# }}}
+
+# Moving {{{
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up 
+bindsym $mod+l focus right
+# }}}
+
+# Shifting {{{
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+# Move workspaces across displays {{{
+bindsym $caps+$mod+Shift+h move workspace to output left
+bindsym $caps+$mod+Shift+j move workspace to output down
+bindsym $caps+$mod+Shift+k move workspace to output up
+bindsym $caps+$mod+Shift+l move workspace to output right
+# }}}
+# }}}
+
+# Resizing {{{
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+bindsym $mod+ctrl+h resize shrink width 15 px
+bindsym $mod+ctrl+j resize grow height 15 px
+bindsym $mod+ctrl+k resize shrink height 15 px
+bindsym $mod+ctrl+l resize grow width 15 px
+# }}}
+
+# {{{ Kill
+bindsym $mod+Shift+q kill
+# }}}
+
+# {{{ Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+plus scratchpad show
+# }}}
+# }}}
+
+# Bar {{{
+bar {
+  position top
+  status_command i3status-rs $HOME/.config/i3status-rs/config.toml
+}
+# }}}
+
+# Background {{{
+exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg
+exec --no-startup-id nm-applet
+# }}}
+
+# Compton {{{
+# exec compton --config ~/.config/compton.config
+# }}}
+
+# Lockscreen {{{
+bindsym $mod+Shift+p exec betterlockscreen -l
+exec xautolock -time 15 -locker "betterlockscreen -l" -corners -0-0
+exec xss-lock -l -- betterlockscreen -l
+# }}}
+
+# Media Buttons {{{
+bindsym XF86AudioMute exec "amixer set Master toggle"
+bindsym XF86AudioPlay exec "playerctl play-pause"
+bindsym XF86AudioPrev exec "playerctl previous"
+bindsym XF86AudioNext exec "playerctl next"
+# Overrides for Thinkpad {{{
+bindsym XF86AudioMicMute exec "playerctl play-pause"
+bindsym XF86Display exec "playerctl previous"
+bindsym XF86Favorites exec "playerctl next"
+# }}}
+bindsym XF86AudioRaiseVolume exec amixer set Master -q 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master -q 5%-
+bindsym XF86MonBrightnessUp exec brightness +5%
+bindsym XF86MonBrightnessDown exec brightness -5%
+# }}}
+
+# Touchpad {{{
+exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Tapping Enabled' 1
+exec xinput set-prop 'SYNA8004:00 06CB:CD8B Touchpad' 'libinput Natural Scrolling Enabled' 1
+exec xset r rate 150 50
+# }}}
+
+# Appearance {{{
+# Windows {{{
+# Remove borders and title of windows
+for_window [class=".*"] border pixel 2
+#}}}
+# Borders {{{
+smart_borders on
+# }}}
+# }}}
+
+# Gaps {{{
+# gaps inner 2
+# smart_gaps on
+# smart_borders on
+# }}}
