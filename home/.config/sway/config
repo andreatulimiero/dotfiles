@@ -150,9 +150,9 @@ exec --no-startup-id nm-applet
 # }}}
 
 # Lockscreen {{{
-bindsym $mod+Shift+p exec betterlockscreen -l
-exec xautolock -time 15 -locker "betterlockscreen -l" -corners -0-0
-exec xss-lock -l -- betterlockscreen -l
+bindsym $mod+Shift+p exec swaylock -i ~/Pictures/Lockscreen.jpg
+exec xautolock -time 15 -locker "swaylock -i ~/Pictures/Lockscreen.jpg" -corners -0-0
+exec xss-lock -l -- swaylock -i ~/Pictures/Lockscreen.jpg
 # }}}
 
 # Media Buttons {{{
