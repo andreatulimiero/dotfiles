@@ -152,7 +152,15 @@ exec --no-startup-id nm-applet
 # Lockscreen {{{
 bindsym $mod+Shift+p exec swaylock -i ~/Pictures/Lockscreen.jpg
 exec xautolock -time 15 -locker "swaylock -i ~/Pictures/Lockscreen.jpg" -corners -0-0
-exec xss-lock -l -- swaylock -i ~/Pictures/Lockscreen.jpg
+# Lock the screen after 300 seconds of inactivity, turn off screens after 600
+# seconds and tunr screens back on when resumed. Finally, lock the screen when
+# logind signals the session should be locked and before going to sleep.
+exec swayidle -w \
+  timeout 300 'swaylock -f -i ~/Pictures/Lockscreen.jpg' \
+  timeout 600 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -i ~/Pictures/Lockscreen.jpg' \
+  lock 'swaylock -f -i ~/Pictures/Lockscreen.jpg'
 # }}}
 
 # Media Buttons {{{
