@@ -1,4 +1,5 @@
 #!/bin/bash
+source base.sh
 
 # Prepare the config files
 ./prepare.py

@@ -9,7 +9,7 @@ icons_format = "{icon}"
 ##good_fg = "#ebdbb2"
 
 [icons]
-icons = "/home/tulimiero/Repos/i3status-rust/files/icons/awesome6.toml"
+icons = "awesome6.toml"
 [icons.overrides]
 volume_muted = "\uf026 \uf00d"
 backlight = [

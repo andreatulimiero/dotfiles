@@ -1,19 +1,8 @@
 #!/bin/bash
+source base.sh
 
-set -euo pipefail
-
-source ./logs.sh
-
-get_hostname() {
-  cat /proc/sys/kernel/hostname
-}
-
-branch=$(get_hostname)
-log "Versioning configs by switching to ${branch} branch ..."
+branch=$(GetHostname)
+Log "Versioning configs by switching to ${branch} branch ..."
 git checkout ${branch} &>/dev/null
-if [ $? -ne 0 ]; then
-  error "Failed to switch to ${branch} branch"
-  exit 1
-else
-  success "Versioned configs"
-fi
+CheckSuccessOrExitWith "Failed to switch to ${branch} branch"
+Success "Versioned configs"

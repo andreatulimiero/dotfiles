@@ -11,7 +11,7 @@
   c = commit
   r = rebase -i
 [diff]
-	tool = nvimd -d
+	tool = vimdiff
 [difftool]
 	prompt = false
 [core]

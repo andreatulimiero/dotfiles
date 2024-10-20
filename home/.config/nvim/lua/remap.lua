@@ -23,3 +23,6 @@ vim.keymap.set("i", "kj", "<Esc>")
 -- Tabs
 vim.keymap.set("n", "<C-h>", ":tabp<CR>")
 vim.keymap.set("n", "<C-l>", ":tabn<CR>")
+
+-- Mouse
+vim.opt.mouse = ""
