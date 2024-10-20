@@ -197,6 +197,7 @@ input type:keyboard {
 # }}}
 
 # Appearance {{{
+output '*' bg ~/Pictures/Pattern.jpg tile
 # Windows {{{
 # Remove borders and title of windows
 for_window [class=".*"] border pixel 2
