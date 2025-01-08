@@ -26,7 +26,7 @@ checkout <hostname>`.
 #### Making Changes
 Depending on the type of changes (machine-agnostic or machine-dependent), you
 follow one of the following approaches.
-##### Machine Independent
+##### Machine-Agnostic
 1. Checkout the `main` branch (which is machine-agnostic)
 1. Make changes and create a new commit
 1. Run the `./rebase_all.sh` script to rebase all machine-specific branches on
@@ -38,7 +38,7 @@ N.B.: Squashing changes in the `main` branch will make the `./rebase_all.sh`
 script fail since the base commit of the machine-specific branches is going to
 be different.
 
-##### Mahine Specific
+##### Mahine-Specific
 1. Checkout the machine-specific branch
 1. Make changes and create a new commit
 1. Push the changes with `git push <machine-specific-branch>`
