@@ -151,7 +151,6 @@ exec --no-startup-id nm-applet
 
 # Lockscreen {{{
 bindsym $mod+Shift+p exec swaylock -i ~/Pictures/Lockscreen.jpg
-exec xautolock -time 15 -locker "swaylock -i ~/Pictures/Lockscreen.jpg" -corners -0-0
 # Lock the screen after 300 seconds of inactivity, turn off screens after 600
 # seconds and tunr screens back on when resumed. Finally, lock the screen when
 # logind signals the session should be locked and before going to sleep.
@@ -204,3 +203,4 @@ for_window [class=".*"] border pixel 2
 smart_borders on
 # }}}
 # }}}
+for_window [app_id=".*"] inhibit_idle fullscreen
