@@ -2,4 +2,4 @@ confirm-close-surface = false
 window-decoration = false
 font-size = 9
 font-family = "Hack Nerd Font Mono"
-theme = UltraDark
+background = #000
