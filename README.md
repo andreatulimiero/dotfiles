@@ -26,8 +26,10 @@ To make changes that apply to all machines:
 1. Make changes and create a new commit
 1. Run the `./rebase_all.sh` script to rebase all machine-dependent branches on
    top of the latest `main` commit.
+1. Push the changes with `git push --all --force` (you need to `--force` since
+   machine-dependent branches were rebased -- IIUC)
 
-N.b.: Squashing changes in the `main` branch will make the `./rebase_all.sh`
+N.B.: Squashing changes in the `main` branch will make the `./rebase_all.sh`
 script fail since the base commit of the machine-dependent branches is going to
 be different.
 
