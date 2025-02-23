@@ -14,8 +14,8 @@ xwayland disable
 
 # Shortcuts {{{
 bindsym $mod+e exec alacritty --class Floating -e ranger
-# bindsym $mod+Return exec alacritty -e tmux
-bindsym $mod+Return exec ghostty -e tmux
+bindsym $mod+Return exec alacritty -e tmux
+# bindsym $mod+Return exec ghostty -e tmux
 bindsym $mod+Shift+Return exec alacritty
 bindsym $caps+p exec passmenu
 bindsym Print exec gnome-screenshot -i
@@ -148,6 +148,7 @@ bar {
 # Background {{{
 exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg
 exec --no-startup-id nm-applet
+exec --no-startup-id mako
 # }}}
 
 # Lockscreen {{{
