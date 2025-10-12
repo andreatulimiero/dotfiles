@@ -81,14 +81,14 @@ bindsym $mod+space focus mode_toggle
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # Floating apps {{{
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Org.gnome.Nautilus"] floating enable
-for_window [class="Arandr"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="Floating"] floating enable
-for_window [class="feh"] floating enable
-for_window [class="Gnome-screenshot"] floating enable
-for_window [class="Nm-connection-editor"] floating enable
+for_window [app_id="Blueman-manager"] floating enable
+for_window [app_id="Org.gnome.Nautilus"] floating enable
+for_window [app_id="Arandr"] floating enable
+for_window [app_id="Pavucontrol"] floating enable
+for_window [app_id="Floating"] floating enable
+for_window [app_id="feh"] floating enable
+for_window [app_id="Gnome-screenshot"] floating enable
+for_window [app_id="Nm-connection-editor"] floating enable
 # }}}
 # }}}
 
@@ -149,6 +149,7 @@ bar {
 exec --no-startup-id feh --bg-tile ~/Pictures/Pattern.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id mako
+exec --no-startup-id blueman-applet
 # }}}
 
 # Lockscreen {{{
@@ -181,13 +182,14 @@ bindsym XF86MonBrightnessDown exec brightness -5%
 # }}}
 
 # Output Devices {{{
-output eDP-1 scale 1.8
+# output eDP-1 scale 1.8
 # }}}
 
 # Input Devices {{{
 input type:touchpad {
-    tap enabled
-    natural_scroll enabled
+  tap enabled
+  natural_scroll enabled
+  drag_lock disabled
 }
 input type:keyboard {
   repeat_rate 50

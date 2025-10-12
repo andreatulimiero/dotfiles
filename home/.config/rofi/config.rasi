@@ -1,6 +1,6 @@
 configuration {
   /* Aspect {{{ */
-  modi: "drun,window,run";
+  modi: "drun,window,run,combi";
   font: "System San Francisco Display 10";
   /* }}} */
 

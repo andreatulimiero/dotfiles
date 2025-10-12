@@ -2,6 +2,10 @@
 set -gx EDITOR nvim
 # }}}
 
+# Style {{{
+set fish_cursor_insert underscore
+# }}}
+
 # Paths{{{
 fish_add_path ~/bin
 fish_add_path ~/.local/bin
