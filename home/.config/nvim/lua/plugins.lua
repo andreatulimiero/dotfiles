@@ -1,62 +1,90 @@
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use { "ellisonleao/gruvbox.nvim" }
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use {
-    "hrsh7th/nvim-cmp",
-    path = "~/Repos/nvim-cmp/"
-  }
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      {'neovim/nvim-lspconfig'},
-      {
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
+return {
+  "ellisonleao/gruvbox.nvim",
+  "hrsh7th/nvim-cmp",
+  {
+    "nvim-telescope/telescope.nvim",
+    version = "0.1.6",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
+  {
+    "mason-org/mason.nvim",
+    opts = {}
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "lua_ls", -- Lua
+        "rust_analyzer", -- Rust
+        "clangd", -- C++
+        "pyright", -- Python
+        "gopls" -- Golang
       },
-      {'williamboman/mason-lspconfig.nvim'},
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'L3MON4D3/LuaSnip'},
-    }
-  }
-  use {
-    "Exafunction/codeium.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
     },
-    config = function()
-      require("codeium").setup({
-      })
-    end
-  }
-  use {
-    "kelly-lin/ranger.nvim",
-    config = function()
-      require("ranger-nvim").setup({ replace_netrw = true })
-      vim.api.nvim_set_keymap("n", "<C-n>", "", {
-        noremap = true,
-        callback = function()
-          require("ranger-nvim").open(true)
-        end,
-      })
-    end,
-  }
-  use {
-    'LukasPietzschmann/telescope-tabs',
-    requires = { 'nvim-telescope/telescope.nvim' }
-  }
-  use {
+    dependencies = {
+        {"mason-org/mason.nvim"},
+        "neovim/nvim-lspconfig",
+    },
+  },
+  {
+    'saghen/blink.cmp',
+    version = '1.*',
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = 'none',
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<C-f>'] = { 'accept', 'fallback' },
+      },
+      appearance = {
+        nerd_font_variant = 'mono'
+      },
+      completion = { documentation = { auto_show = false } },
+      sources = {
+        default = { 'lsp', 'path', 'buffer' },
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" }
+    },
+    opts_extend = { "sources.default" }
+  },
+  {
+    "LukasPietzschmann/telescope-tabs",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+  },
+  {
     "kelly-lin/telescope-ag",
     dependencies = { "nvim-telescope/telescope.nvim" },
-  }
-end)
-
+  },
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+    }
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
+}
