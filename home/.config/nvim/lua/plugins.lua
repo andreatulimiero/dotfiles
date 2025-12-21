@@ -87,4 +87,27 @@ return {
       },
     },
   },
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        go = { "golines" },
+      },
+      formatters = {
+        golines = {
+          prepend_args = function(ctx)
+            return {
+              "-m",
+              "80",
+              "--base-formatter=gofmt",
+            }
+          end,
+        },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "never",
+      },
+    },
+  },
 }
