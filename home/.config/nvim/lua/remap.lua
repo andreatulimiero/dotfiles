@@ -23,7 +23,8 @@ vim.opt.undofile = true
 vim.keymap.set("i", "kj", "<Esc>")
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-  callback = function() vim.cmd("silent! checktime") end,
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
 })
 
 -- Tabs
