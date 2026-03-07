@@ -15,6 +15,7 @@ fish_add_path ~/.cargo/bin
 
 # Aliases {{{
 alias vi="nvim"
+alias lsd="ls -lth"
 # }}}
 
 # Key Bindings {{{

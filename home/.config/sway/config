@@ -13,7 +13,8 @@ xwayland disable
 # }}}
 
 # Shortcuts {{{
-bindsym $mod+e exec alacritty --class Floating -e ranger
+# bindsym $mod+e exec alacritty --class Floating -e ranger
+bindsym $mod+e exec ghostty --class=Float.ing -e yazi
 bindsym $mod+Return exec alacritty -e tmux
 # bindsym $mod+Return exec ghostty -e tmux
 bindsym $mod+Shift+Return exec alacritty
@@ -86,6 +87,7 @@ for_window [app_id="Org.gnome.Nautilus"] floating enable
 for_window [app_id="Arandr"] floating enable
 for_window [app_id="Pavucontrol"] floating enable
 for_window [app_id="Floating"] floating enable
+for_window [app_id="Float.ing"] floating enable
 for_window [app_id="feh"] floating enable
 for_window [app_id="Gnome-screenshot"] floating enable
 for_window [app_id="Nm-connection-editor"] floating enable
@@ -182,7 +184,7 @@ bindsym XF86MonBrightnessDown exec brightness -5%
 # }}}
 
 # Output Devices {{{
-# output eDP-1 scale 1.8
+output eDP-1 scale 1.8
 # }}}
 
 # Input Devices {{{

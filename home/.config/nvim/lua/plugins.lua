@@ -92,6 +92,7 @@ return {
     opts = {
       formatters_by_ft = {
         go = { "golines" },
+        python = { "ruff" },
       },
       formatters = {
         golines = {
@@ -105,7 +106,7 @@ return {
         },
       },
       format_on_save = {
-        timeout_ms = 500,
+        timeout_ms = 5000,
         lsp_format = "never",
       },
     },
